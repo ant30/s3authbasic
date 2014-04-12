@@ -3,8 +3,10 @@ import os
 from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
+
 with open(os.path.join(here, 'README.txt')) as f:
     README = f.read()
+
 with open(os.path.join(here, 'CHANGES.txt')) as f:
     CHANGES = f.read()
 
@@ -13,18 +15,19 @@ requires = [
     'pyramid_chameleon',
     'pyramid_debugtoolbar',
     'waitress',
-    ]
+    'boto',
+]
 
 setup(name='s3authbasic',
       version='0.0',
       description='s3authbasic',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
-        "Programming Language :: Python",
-        "Framework :: Pyramid",
-        "Topic :: Internet :: WWW/HTTP",
-        "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
-        ],
+          "Programming Language :: Python",
+          "Framework :: Pyramid",
+          "Topic :: Internet :: WWW/HTTP",
+          "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
+      ],
       author='Antonio Perez-Aranda Alcaide',
       author_email='ant30tx@gmail.com',
       url='http://www.ant30.es/',
