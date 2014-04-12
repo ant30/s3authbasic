@@ -4,7 +4,10 @@ from hashlib import sha256
 from pyramid.authentication import BasicAuthAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid.config import Configurator
+from pyramid.exceptions import ConfigurationError
 from pyramid.security import Allow, Authenticated
+
+from .s3controller import S3Controller, get_s3_controller
 
 
 def check_credentials(username, password, request):
@@ -16,12 +19,18 @@ def check_credentials(username, password, request):
         return [username]
 
 
-def read_settings(settings, key, default=None):
+def read_settings(settings, key, default=None, required=False):
     env_key = key.upper()
+    value = None
     if env_key in os.environ:
-        return os.environ.get(env_key)
+        value = os.environ.get(env_key)
     else:
-        return settings.get(key, default)
+        value = settings.get(key, default)
+
+    if value is None and required:
+        raise ConfigurationError('The property {0} is required'.format(key))
+
+    return value
 
 
 def read_users(settings):
@@ -40,6 +49,10 @@ def read_users(settings):
             password = os.environ.get(key)
             credentials[username] = password
 
+    if not credentials:
+        raise ConfigurationError("There isn't any user set, please use keys"
+                                 " like user_admin = 123wdsdd123123 (encoded "
+                                 "via sha256)")
     return credentials
 
 
@@ -59,6 +72,17 @@ def main(global_config, **settings):
     settings['realm'] = read_settings(settings, 'realm',
                                       default='Protected site')
 
+    settings['aws_bucket_name'] = read_settings(
+        settings, 'aws_bucket_name', required=True)
+
+    settings['aws_secret_access_key'] = read_settings(
+        settings, 'aws_secret_access_key', required=True)
+
+    settings['aws_access_key_id'] = read_settings(
+        settings, 'aws_access_key_id', required=True)
+
+    settings['s3'] = S3Controller(settings)
+
     authn_policy = BasicAuthAuthenticationPolicy(check_credentials,
                                                  realm=settings['realm'],
                                                  debug=True)
@@ -68,8 +92,8 @@ def main(global_config, **settings):
                           root_factory=RootSite)
     config.set_authentication_policy(authn_policy)
     config.set_authorization_policy(authz_policy)
-    config.include('pyramid_chameleon')
-    config.add_static_view('static', 'static', cache_max_age=3600)
-    config.add_route('home', '/')
+    config.add_route('site', pattern='{path:.*}')
+    config.add_request_method(get_s3_controller, name='s3', reify=True)
+
     config.scan()
     return config.make_wsgi_app()
