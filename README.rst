@@ -4,6 +4,11 @@
 s3authbasic
 ===========
 
+.. image:: https://travis-ci.org/ant30/s3authbasic.svg?branch=master   :target:https://travis-ci.org/ant30/s3authbasic
+
+.. image:: https://coveralls.io/repos/ant30/s3authbasic/badge.png?branch=master :target: https://coveralls.io/r/ant30/s3authbasic?branch=master
+
+
 s3authbasic is a Pyramid application aimed to serve a static websites stored
 in Amazon S3 protected by Auth Basic authentication. You need a IAM user with
 its credentials and read access on the bucket which contains the static
