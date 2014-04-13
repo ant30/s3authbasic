@@ -2,6 +2,8 @@ import os
 
 from setuptools import setup, find_packages
 
+VERSION = '0.1'
+
 here = os.path.abspath(os.path.dirname(__file__))
 
 with open(os.path.join(here, 'README.rst')) as f:
@@ -26,8 +28,9 @@ test_requires_extras = test_requires + [
     'coverage',
 ]
 
+
 setup(name='s3authbasic',
-      version='0.1',
+      version=VERSION,
       description='s3authbasic',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
@@ -39,6 +42,8 @@ setup(name='s3authbasic',
       author='Antonio Perez-Aranda Alcaide',
       author_email='ant30tx@gmail.com',
       url='http://www.ant30.es/',
+      download_url='https://github.com/ant30/s3authbasic/'
+                   'tarball/{0}'.format(VERSION),
       keywords='web pyramid pylons s3',
       packages=find_packages(),
       include_package_data=True,
