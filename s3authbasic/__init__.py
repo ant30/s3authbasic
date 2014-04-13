@@ -84,8 +84,7 @@ def main(global_config, **settings):
     settings['s3'] = S3Controller(settings)
 
     authn_policy = BasicAuthAuthenticationPolicy(check_credentials,
-                                                 realm=settings['realm'],
-                                                 debug=True)
+                                                 realm=settings['realm'])
     authz_policy = ACLAuthorizationPolicy()
 
     config = Configurator(settings=settings,
