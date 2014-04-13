@@ -1,4 +1,3 @@
-
 from boto.s3.connection import S3Connection
 
 
@@ -9,7 +8,9 @@ class S3Controller:
         self.secret = settings['aws_secret_access_key']
         self.bucket_name = settings['aws_bucket_name']
 
-        self.s3 = S3Connection(self.key_id, self.secret)
+        s3 = settings.get('S3Wrapper', S3Connection)
+
+        self.s3 = s3(self.key_id, self.secret)
         self.bucket = self.s3.get_bucket(self.bucket_name, validate=False)
 
     def get_file(self, path):

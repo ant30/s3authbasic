@@ -17,6 +17,15 @@ requires = [
     'boto',
 ]
 
+test_requires = [
+    'WebTest',
+]
+
+test_requires_extras = test_requires + [
+    'nose',
+    'coverage',
+]
+
 setup(name='s3authbasic',
       version='0.0',
       description='s3authbasic',
@@ -35,7 +44,10 @@ setup(name='s3authbasic',
       include_package_data=True,
       zip_safe=False,
       install_requires=requires,
-      tests_require=requires,
+      tests_require=test_requires,
+      extras_require={
+          'testing': test_requires_extras,
+      },
       test_suite="s3authbasic",
       entry_points="""\
       [paste.app_factory]

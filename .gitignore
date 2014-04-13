@@ -2,4 +2,6 @@
 dist/
 *pyc
 .ropeproject/
+.coverage
+nosetests.xml
 
