@@ -16,6 +16,6 @@ def site(request):
     s3file = request.s3.get_file(request.path)
     if s3file is None:
         return HTTPNotFound()
-    response = Response(content_type='text/html')
+    response = Response(content_type=s3file.content_type)
     response.app_iter = s3file
     return response
