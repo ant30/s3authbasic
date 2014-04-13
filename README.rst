@@ -1,12 +1,12 @@
+.. image:: https://travis-ci.org/ant30/s3authbasic.svg?branch=master  :target: https://travis-ci.org/ant30/s3authbasic
+
+.. image:: https://coveralls.io/repos/ant30/s3authbasic/badge.png?branch=master :target: https://coveralls.io/r/ant30/s3authbasic?branch=master
+
 .. contents::
 
 ===========
 s3authbasic
 ===========
-
-.. image:: https://travis-ci.org/ant30/s3authbasic.svg?branch=master   :target:https://travis-ci.org/ant30/s3authbasic
-
-.. image:: https://coveralls.io/repos/ant30/s3authbasic/badge.png?branch=master :target: https://coveralls.io/r/ant30/s3authbasic?branch=master
 
 
 s3authbasic is a Pyramid application aimed to serve a static websites stored
