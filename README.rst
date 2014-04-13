@@ -13,9 +13,9 @@ Amazon Settings
 ===============
 
 I assumed that you have a protected bucket. To create the IAM user with the
-correct permissions you need go to the IAM_ app in the AWS Console
+correct permissions you need go to the iam_ app in the AWS Console
 
-.. _IAM https://console.aws.amazon.com/s3/home
+.. _iam https://console.aws.amazon.com/s3/home
 
 Click **Users** section and click in the **Creare New User** blue button.
 
