@@ -1,1 +1,1 @@
-web: bash ./run
+web: run-s3authbasic
