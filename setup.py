@@ -27,7 +27,7 @@ test_requires_extras = test_requires + [
 ]
 
 setup(name='s3authbasic',
-      version='0.0',
+      version='0.1',
       description='s3authbasic',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
