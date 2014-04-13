@@ -23,7 +23,7 @@ def read_settings(settings, key, default=None, required=False):
     env_key = key.upper()
     value = None
     if env_key in os.environ:
-        value = os.environ.get(env_key)
+        value = os.environ.get(env_key, default)
     else:
         value = settings.get(key, default)
 
@@ -44,8 +44,8 @@ def read_users(settings):
             credentials[username] = password
 
     for key in os.environ.keys():
-        if key.startswith(key_prefix):
-            username = key.replace(key_prefix, '')
+        if key.startswith(key_prefix.upper()):
+            username = key.replace(key_prefix.upper(), '')
             password = os.environ.get(key)
             credentials[username] = password
 
