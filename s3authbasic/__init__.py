@@ -1,5 +1,6 @@
 import os
 from hashlib import sha256
+import re
 
 from pyramid.authentication import BasicAuthAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
@@ -94,5 +95,5 @@ def main(global_config, **settings):
     config.add_route('site', pattern='{path:.*}')
     config.add_request_method(get_s3_controller, name='s3', reify=True)
 
-    config.scan()
+    config.scan(ignore=[re.compile('.*test(s|ing).*').search])
     return config.make_wsgi_app()

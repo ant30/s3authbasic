@@ -57,5 +57,7 @@ setup(name='s3authbasic',
       entry_points="""\
       [paste.app_factory]
       main = s3authbasic:main
+      [console_scripts]
+      run-s3authbasic = s3authbasic.runapp:main
       """,
       )
