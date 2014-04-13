@@ -76,7 +76,7 @@ I suggest you to use a virtualenv but I don't use that in this doc.
 You need a Pyramid ini settings file. You can find one example_ in the
 github reposity in the config-templates directory.
 
-.. _example: https://github.com/ant30/s3authbasic/blob/master/config-templates/development.ini
+.. _example: https://github.com/ant30/s3authbasic/blob/master/s3authbasic/config-templates/development.ini
 
 
 Configuration
@@ -121,12 +121,19 @@ The environment variable should look like this:
 Start the application
 =====================
 
-You use the follow command:
+You should use the follow command if you have customized the ini file:
 
 .. code-block:: bash
 
    pserve development.ini
 
+
+Otherwise, you can use this command:
+
+.. code-block:: bash
+
+   run-s3authbasic
+
 If you are using the default ini file, the application should be
-available in the 6543 port. If you are deployed the app in your
+available in the 6543 port. If you have deployed the app in your
 own system, you can access it through http://127.0.0.1:6543/
