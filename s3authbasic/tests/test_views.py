@@ -17,7 +17,7 @@ class ViewsTests(BaseAppTest):
         ):
             result = self.testapp.get(path, extra_environ=AUTH_ENVIRON,
                                       status=200)
-            self.assertIn(expect, result.body)
+            self.assertTrue(expect in result.body)
 
     def test_not_validpath(self):
         for path in (
