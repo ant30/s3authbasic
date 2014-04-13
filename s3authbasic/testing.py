@@ -1,4 +1,5 @@
 from mimetypes import MimeTypes
+import os
 from os import path
 import urllib
 
@@ -67,9 +68,21 @@ class S3ConnectionMockup:
         return S3BucketMockup(bucket_name)
 
 
+def unset_environment():
+    for item in [
+        'USER_admin',
+        'AWS_BUCKET_NAME',
+        'AWS_ACCESS_KEY_ID',
+        'AWS_SECRET_ACCESS_KEY',
+    ]:
+        if item in os.environ:
+            del os.environ[item]
+
+
 class BaseAppTest(unittest.TestCase):
 
     def setUp(self):
+        unset_environment()
         settings = {
             'user_admin': '8c6976e5b5410415bde908bd4dee15dfb16'
                           '7a9c873fc4bb8a81f6f2ab448a918',
@@ -83,4 +96,5 @@ class BaseAppTest(unittest.TestCase):
         self.testapp = TestApp(app)
 
     def tearDown(self):
+        unset_environment()
         self.testapp.reset()
