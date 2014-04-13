@@ -13,9 +13,9 @@ Amazon Settings
 ===============
 
 I assumed that you have a protected bucket. To create the IAM user with the
-correct permissions you need go to the iam_ app in the AWS Console
+correct permissions you need go to the IAM_ app in the AWS Console
 
-.. _iam https://console.aws.amazon.com/s3/home
+.. _IAM: https://console.aws.amazon.com/s3/home
 
 Click **Users** section and click in the **Creare New User** blue button.
 
@@ -107,6 +107,7 @@ You can get the hash of your password by this command in linux:
 The environment variable should look like this:
 
 .. code-block:: bash
+
    export USER_admin='123123123123123123123'
 
 
@@ -115,7 +116,7 @@ Start the application
 
 You use the follow command:
 
-.. code-block :: bash
+.. code-block:: bash
 
    pserve development.ini
 
