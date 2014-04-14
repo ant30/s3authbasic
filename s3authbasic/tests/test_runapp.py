@@ -46,5 +46,12 @@ class RunAppTest(unittest.TestCase):
         app = main(serve=mock_serve)
         self.assertTrue(app['url_scheme'] == 'http')
 
+    def test_change_settings(self):
+        os.environ.update({
+            'SETTINGS': 's3authbasic/config-templates/production.ini'
+        })
+        app = main(serve=mock_serve)
+        self.assertTrue(app['url_scheme'] == 'http')
+
     def tearDown(self):
         unset_environment()
