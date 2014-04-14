@@ -1,5 +1,11 @@
-0.1
----
+0.1.2
+-----
+
+- Fix path with whitespaces
+- Fix settings relative location and the default package location detection
+
+0.1.1
+-----
 
 - Fix WebTest error
 - Add files needed by heroku
