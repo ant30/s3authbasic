@@ -13,7 +13,8 @@ class ViewsTests(BaseAppTest):
             ('/level1/other.html', 'other'),
             ('/level1/level2', 'level 2'),
             ('/level1/level2/index.html', 'level 2'),
-
+            ('/blue%20child', 'whitespace'),
+            ('/blue%20child/index.html', 'whitespace'),
         ):
             result = self.testapp.get(path, extra_environ=AUTH_ENVIRON,
                                       status=200)
