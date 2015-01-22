@@ -15,7 +15,7 @@ def check_credentials(username, password, request):
     credentials = request.registry.settings['credentials']
     passwordhash = credentials.get(username, None)
 
-    passwordhashed = sha256(password).hexdigest()
+    passwordhashed = sha256(password.encode('utf-8')).hexdigest()
     if passwordhash is not None and passwordhashed == passwordhash:
         return [username]
 

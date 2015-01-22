@@ -117,6 +117,16 @@ The environment variable should look like this:
 
    export USER_admin='123123123123123123123'
 
+**NOTE:** In 0.1.3 version we added encoding utf-8 option to password, so if
+you want to use non ascii characters, the hash can vary. You can use something
+like this in a terminal. You need the hashlib package from pypi.
+
+.. code-block:: bash
+
+   from hashlib import sha256
+   sha256('your password!!'.encode('utf-8')).hexdigest()
+
+
 
 Start the application
 =====================
